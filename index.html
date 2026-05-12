@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт-визитка</title>
+    <!-- Подключаем иконки для соцсетей -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-box {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h1 { margin-bottom: 20px; color: #00d4ff; }
+        h2 { margin-bottom: 15px; }
+
+        /* Social Links */
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: #252525;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            background: #333;
+        }
+
+        .tg:hover { color: #26A5E4; }
+        .ds:hover { color: #5865F2; }
+        .tw:hover { color: #9146FF; }
+        .st:hover { color: #66c0f4; }
+
+        /* Helpers */
+        #game, #music { margin-top: 50px; }
+        .placeholder { color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#main">Main</a>
+            <a href="#game">Game</a>
+            <a href="#music">Music</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section>
+            <div class="content-box">
+                <h1>Привет, я [Твоё Имя]</h1>
+                <p>Добро пожаловать на мою страницу. Здесь вы можете найти все актуальные ссылки для связи и мои проекты.</p>
+                
+                <div class="social-links">
+                    <a href="https://t.me/your_user" class="social-card tg">
+                        <i class="fab fa-telegram fa-xl"></i> Telegram
+                    </a>
+                    <a href="https://discord.gg/your_invite" class="social-card ds">
+                        <i class="fab fa-discord fa-xl"></i> Discord
+                    </a>
+                    <a href="https://twitch.tv/your_channel" class="social-card tw">
+                        <i class="fab fa-twitch fa-xl"></i> Twitch
+                    </a>
+                    <a href="https://steamcommunity.com/id/your_id" class="social-card st">
+                        <i class="fab fa-steam fa-xl"></i> Steam
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="game">
+        <div class="content-box">
+            <h2>Game</h2>
+            <p class="placeholder">Здесь будет информация о твоих любимых играх или игровых достижениях...</p>
+        </div>
+    </section>
+
+    <section id="music">
+        <div class="content-box">
+            <h2>Music</h2>
+            <p class="placeholder">Твои плейлисты, любимые треки или интеграция Spotify...</p>
+        </div>
+    </section>
+
+</body>
+</html>
