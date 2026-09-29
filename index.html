@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCL_6667 Hunter — Защита чата tetpolina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        twitch: {
+                            purple: '#9146FF',
+                            dark: '#0b0b0d',
+                            panel: '#131316',
+                            card: '#1a1a1e',
+                            border: '#2d2d35',
+                            hover: '#26262b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0b0d;
+            color: #efeff1;
+            overflow-x: hidden;
+        }
+        @keyframes targetVaporize {
+            0% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); }
+            30% { transform: scale(1.03) translateY(-4px); background-color: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.8); }
+            60% { transform: scale(0.95) translateY(-15px) skewX(5deg); opacity: 0.5; filter: blur(4px); }
+            100% { transform: scale(0.8) translateY(-40px) scaleX(0.05); opacity: 0; filter: blur(8px); }
+        }
+        .target-vaporizing {
+            animation: targetVaporize 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(145, 70, 255, 0.25);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131316;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9146FF;
+        }
+    </style>
+</head>
+<body class="bg-twitch-dark min-h-screen flex flex-col selection:bg-twitch-purple selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-twitch-dark/80 backdrop-blur-md border-b border-twitch-border">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-red-600 p-2 rounded-xl text-white font-black text-base flex items-center shadow-lg shadow-red-600/40">
+                    <i class="fa-solid fa-crosshairs mr-2"></i>MCL_6667 Hunter
+                </div>
+                <span class="text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-semibold">
+                    TARGET: mcl_6667 ONLY
+                </span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-zinc-400">
+                <a href="#features" class="hover:text-white transition">Как это работает</a>
+                <a href="#simulator" class="hover:text-white transition">Тест в чате tetpolina</a>
+                <a href="#pricing" class="hover:text-white transition">Тарифы</a>
+            </nav>
+            <div>
+                <button onclick="openInstallModal()" class="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-lg shadow-red-600/30 flex items-center">
+                    <i class="fa-solid fa-shield-cat mr-2"></i>Защитить tetpolina
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 px-4 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-red-600/10 blur-[130px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 bg-twitch-panel border border-twitch-border px-3.5 py-1.5 rounded-full text-xs text-zinc-300 mb-6 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                <span>Цель найдена: персональное уничтожение сообщений <strong>mcl_6667</strong> у <strong>tetpolina</strong></span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
+                Очистим чат <span class="text-transparent bg-clip-text bg-gradient-to-r from-twitch-purple to-pink-500">tetpolina</span> от главного вредителя: <span class="text-red-500 underline decoration-red-500/40">mcl_6667</span>
+            </h1>
+            
+            <p class="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Все остальные зрители могут писать что угодно. Но если сообщение отправляет пользователь <strong>mcl_6667</strong> — система мгновенно стирает его с лица земли с лазерной точностью и звуком сирены.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openInstallModal()" class="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white font-bold px-8 py-4 rounded-2xl text-sm transition shadow-xl shadow-red-600/30 flex items-center justify-center group">
+                    <i class="fa-solid fa-skull-crossbones mr-2 group-hover:rotate-12 transition-transform"></i>
+                    Установить охоту на mcl_6667
+                </button>
+                <a href="#simulator" class="w-full sm:w-auto bg-twitch-panel hover:bg-twitch-hover border border-twitch-border text-zinc-200 font-semibold px-8 py-4 rounded-2xl text-sm transition flex items-center justify-center">
+                    <i class="fa-solid fa-terminal mr-2 text-red-500"></i>Проверить в симуляторе
+                </a>
+            </div>
+
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-3xl mx-auto">
+                <div class="bg-twitch-panel p-4 rounded-2xl border border-twitch-border">
+                    <div class="text-2xl font-black text-white font-mono">1 Target</div>
+                    <div class="text-xs text-zinc-400">Строго пользователь mcl_6667</div>
+                </div>
+                <div class="bg-twitch-panel p-4 rounded-2xl border border-twitch-border">
+                    <div class="text-2xl font-black text-emerald-400 font-mono">100% Safe</div>
+                    <div class="text-xs text-zinc-400">Остальные зрители не тронуты</div>
+                </div>
+                <div class="bg-twitch-panel p-4 rounded-2xl border border-twitch-border">
+                    <div class="text-2xl font-black text-twitch-purple font-mono">tetpolina</div>
+                    <div class="text-xs text-zinc-400">Защищаемый стример</div>
+                </div>
+                <div class="bg-twitch-panel p-4 rounded-2xl border border-twitch-border">
+                    <div class="text-2xl font-black text-red-500 font-mono" id="stat-wiped">94,182</div>
+                    <div class="text-xs text-zinc-400">Удалено постов mcl_6667</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE SIMULATOR SECTION -->
+    <section id="simulator" class="py-20 px-4 bg-twitch-panel/40 border-t border-b border-twitch-border">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-3">Интерактивный тест чата tetpolina</h2>
+                <p class="text-sm text-zinc-400 max-w-xl mx-auto">
+                    Попробуйте написать сообщение как обычный зритель (оно останется) или отправьте сообщение от имени <strong>mcl_6667</strong> (оно мгновенно сгорит под звуки тревоги).
+                </p>
+            </div>
+
+            <div class="bg-twitch-card border border-twitch-border rounded-3xl shadow-2xl overflow-hidden max-w-3xl mx-auto flex flex-col h-[520px] relative">
+                
+                <!-- Header -->
+                <div class="bg-twitch-panel px-5 py-3 border-b border-twitch-border flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+                        <span class="text-xs font-bold text-zinc-300">Чат стримера: tetpolina (Фильтр точечного уничтожения mcl_6667)</span>
+                    </div>
+                    <div class="text-xs font-mono text-red-400 font-semibold flex items-center">
+                        <i class="fa-solid fa-crosshairs mr-1.5"></i> Режим снайпера активен
+                    </div>
+                </div>
+
+                <!-- Chat Messages Feed -->
+                <div id="sim-chat-box" class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar flex flex-col">
+                    <div class="flex flex-col space-y-1 bg-twitch-dark/60 p-2.5 rounded-xl border border-twitch-border/50 text-xs">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-emerald-400">KittenMew_99</span>
+                            <span class="text-[10px] text-zinc-500 font-mono">19:41</span>
+                        </div>
+                        <p class="text-zinc-200">Всем привет! tetpolina, какая у тебя классная игра сегодня!</p>
+                    </div>
+                    <div class="flex flex-col space-y-1 bg-twitch-dark/60 p-2.5 rounded-xl border border-twitch-border/50 text-xs">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-twitch-purple">KappaLord</span>
+                            <span class="text-[10px] text-zinc-500 font-mono">19:42</span>
+                        </div>
+                        <p class="text-zinc-200">Kappa Kappa 123 PogChamp</p>
+                    </div>
+                </div>
+
+                <!-- Toast Banner -->
+                <div id="sim-toast" class="absolute bottom-20 left-1/2 -translate-x-1/2 bg-twitch-dark border border-red-500/60 px-4 py-2 rounded-xl shadow-2xl text-xs flex items-center space-x-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 z-20">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></div>
+                    <span id="sim-toast-text" class="text-red-300 font-mono">MCL_6667 Hunter стер сообщение цели!</span>
+                </div>
+
+                <!-- Controls & Input Bar -->
+                <div class="p-3 bg-twitch-panel border-t border-twitch-border flex flex-col space-y-2">
+                    <div class="flex items-center justify-between px-1">
+                        <div class="flex items-center space-x-2 text-xs text-zinc-400">
+                            <span>Отправить как:</span>
+                            <button type="button" onclick="setSender('regular')" id="btn-regular" class="bg-twitch-purple text-white px-2.5 py-1 rounded-lg font-bold text-[11px] transition">Обычный зритель</button>
+                            <button type="button" onclick="setSender('mcl')" id="btn-mcl" class="bg-twitch-dark border border-twitch-border text-zinc-400 px-2.5 py-1 rounded-lg font-bold text-[11px] transition">mcl_6667 (Вредитель)</button>
+                        </div>
+                        <span id="current-sender-badge" class="text-[11px] text-emerald-400 font-mono">Ваше сообщение останется в чате</span>
+                    </div>
+
+                    <form id="sim-form" onsubmit="sendSimMessage(event)" class="flex gap-2">
+                        <input type="text" id="sim-input" placeholder="Написать сообщение в чат tetpolina..." class="flex-1 bg-twitch-dark border border-twitch-border rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-red-500 placeholder-zinc-500">
+                        <button type="submit" class="bg-red-600 hover:bg-red-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-md">
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-3">Хирургическая точность против mcl_6667</h2>
+            почему это лучшее решение для стримера tetpolina?
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-twitch-panel p-6 rounded-3xl border border-twitch-border hover:border-red-500/50 transition">
+                <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4 font-bold">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Только mcl_6667</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    Расширение игнорирует всех остальных зрителей. Никаких случайных банов фанатов tetpolina — под удар попадает исключительно пользователь <strong>mcl_6667</strong>.
+                </p>
+            </div>
+
+            <div class="bg-twitch-panel p-6 rounded-3xl border border-twitch-border hover:border-red-500/50 transition">
+                <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4 font-bold">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Мгновенное испарение</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    Как только mcl_6667 пытается отправить хоть слово, алгоритм стирает его за 0.0001 секунду, сопровождая эффектной красной вспышкой.
+                </p>
+            </div>
+
+            <div class="bg-twitch-panel p-6 rounded-3xl border border-twitch-border hover:border-red-500/50 transition">
+                <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-xl mb-4 font-bold">
+                    <i class="fa-solid fa-face-smile-beam"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Спокойствие tetpolina</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    Стример может спокойно вести трансляцию, зная, что ни одно слово от mcl_6667 не нарушит гармонию эфира.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-20 px-4 bg-twitch-panel/20 border-t border-twitch-border">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-4">Тарифные планы</h2>
+            <p class="text-sm text-zinc-400 mb-12">Выберите уровень изоляции для mcl_6667 в чате tetpolina</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="bg-twitch-panel p-8 rounded-3xl border border-twitch-border flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">Базовая защита</div>
+                        <div class="text-3xl font-black text-white mb-4">0 ₽ <span class="text-xs text-zinc-500 font-normal">навсегда</span></div>
+                        <p class="text-xs text-zinc-300 mb-6">Стандартное удаление сообщений mcl_6667 без права на реабилитацию.</p>
+                        <ul class="space-y-3 text-xs text-zinc-300 mb-8">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Удаление постов mcl_6667</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Остальные зрители не затронуты</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Логирование в файл</li>
+                        </ul>
+                    </div>
+                    <button onclick="openInstallModal()" class="w-full bg-twitch-card hover:bg-twitch-hover text-white font-bold py-3 rounded-2xl text-xs transition border border-twitch-border">
+                        Выбрать тариф
+                    </button>
+                </div>
+
+                <div class="bg-twitch-panel p-8 rounded-3xl border-2 border-red-500/50 flex flex-col justify-between relative shadow-xl shadow-red-600/10">
+                    <div class="absolute -top-3 right-6 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Хит для tetpolina
+                    </div>
+                    <div>
+                        <div class="text-xs font-mono text-red-400 uppercase tracking-wider mb-2">VIP Геноцид mcl_6667</div>
+                        <div class="text-3xl font-black text-white mb-4">666 ₽ <span class="text-xs text-zinc-500 font-normal">/ стрим</span></div>
+                        <p class="text-xs text-zinc-300 mb-6">Максимальное уничтожение: удаление постов mcl_6667 с дополнительным звуком сирены.</p>
+                        <ul class="space-y-3 text-xs text-zinc-300 mb-8">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Мгновенное удаление mcl_6667</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Эпические визуальные эффекты взрыва</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Автоматический плевок в сторону mcl_6667</li>
+                        </ul>
+                    </div>
+                    <button onclick="openInstallModal()" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-2xl text-xs transition shadow-lg shadow-red-600/30">
+                        Активировать VIP-защиту
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-4 border-t border-twitch-border bg-twitch-dark text-center text-xs text-zinc-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-white">MCL_6667 Hunter</span>
+                <span>© 2026. Специально для стримера tetpolina.</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-white transition">Правила охоты на mcl_6667</a>
+                <a href="#" class="hover:text-white transition">Поддержка</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INSTALL MODAL -->
+    <div id="install-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-twitch-panel border border-twitch-border rounded-3xl max-w-md w-full p-6 shadow-2xl relative text-center">
+            <button onclick="openInstallModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="w-16 h-16 bg-red-600/20 text-red-500 rounded-2xl mx-auto flex items-center justify-center text-2xl mb-4 font-bold shadow-inner">
+                <i class="fa-solid fa-crosshairs"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-2">Установка фильтра mcl_6667</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed mb-6">
+                Вы подключаете расширение для изоляции <strong>mcl_6667</strong> на трансляциях <strong>tetpolina</strong>. Все остальные зрители смогут общаться абсолютно свободно.
+            </p>
+
+            <div class="space-y-2">
+                <button onclick="completeInstallation()" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-2xl text-xs transition shadow-lg shadow-red-600/30">
+                    Подтвердить и начать охоту на mcl_6667
+                </button>
+                <button onclick="openInstallModal()" class="w-full bg-twitch-card hover:bg-twitch-hover text-zinc-400 py-2.5 rounded-2xl text-xs transition border border-twitch-border">
+                    Отмена
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSenderType = 'regular'; // 'regular' or 'mcl'
+        const simChatBox = document.getElementById('sim-chat-box');
+        const simToast = document.getElementById('sim-toast');
+        const simToastText = document.getElementById('sim-toast-text');
+        const installModal = document.getElementById('install-modal');
+        const statWiped = document.getElementById('stat-wiped');
+        let wipedCount = 94182;
+
+        function setSender(type) {
+            currentSenderType = type;
+            const btnReg = document.getElementById('btn-regular');
+            const btnMcl = document.getElementById('btn-mcl');
+            const badge = document.getElementById('current-sender-badge');
+
+            if (type === 'regular') {
+                btnReg.className = "bg-twitch-purple text-white px-2.5 py-1 rounded-lg font-bold text-[11px] transition";
+                btnMcl.className = "bg-twitch-dark border border-twitch-border text-zinc-400 px-2.5 py-1 rounded-lg font-bold text-[11px] transition";
+                badge.textContent = "Ваше сообщение останется в чате";
+                badge.className = "text-[11px] text-emerald-400 font-mono";
+            } else {
+                btnMcl.className = "bg-red-600 text-white px-2.5 py-1 rounded-lg font-bold text-[11px] transition";
+                btnReg.className = "bg-twitch-dark border border-twitch-border text-zinc-400 px-2.5 py-1 rounded-lg font-bold text-[11px] transition";
+                badge.textContent = "⚠️ Сообщение будет МГНОВЕННО уничтожено!";
+                badge.className = "text-[11px] text-red-400 font-mono animate-pulse";
+            }
+        }
+
+        function showSimToast(text) {
+            simToastText.textContent = text;
+            simToast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            setTimeout(() => {
+                simToast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            }, 2500);
+        }
+
+        function sendSimMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('sim-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const isMcl = currentSenderType === 'mcl';
+            const username = isMcl ? 'mcl_6667' : 'Зритель_tetpolina_fan';
+            const userColor = isMcl ? 'text-red-500 font-black' : 'text-emerald-400 font-bold';
+
+            const msgId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
+            const div = document.createElement('div');
+            div.id = msgId;
+            div.className = 'flex flex-col space-y-1 bg-twitch-dark/60 p-2.5 rounded-xl border border-twitch-border/50 text-xs transition';
+            
+            div.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="${userColor}">${username} ${isMcl ? '🚨 [Вредитель]' : ''}</span>
+                    <span class="text-[10px] text-zinc-500 font-mono">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}</span>
+                </div>
+                <p class="text-zinc-200 leading-relaxed">${text}</p>
+            `;
+
+            simChatBox.appendChild(div);
+            simChatBox.scrollTop = simChatBox.scrollHeight;
+            input.value = '';
+
+            if (simChatBox.children.length > 25) {
+                simChatBox.removeChild(simChatBox.children[0]);
+            }
+
+            // If sender is mcl_6667, instantly target and vaporize it!
+            if (isMcl) {
+                setTimeout(() => {
+                    const target = document.getElementById(msgId);
+                    if (target && !target.classList.contains('target-vaporizing')) {
+                        target.classList.add('target-vaporizing');
+                        wipedCount++;
+                        statWiped.textContent = wipedCount.toLocaleString();
+                        showSimToast("MCL_6667 Hunter стер сообщение от mcl_6667!");
+
+                        setTimeout(() => {
+                            target.innerHTML = `
+                                <div class="text-[11px] text-red-400 font-mono flex items-center space-x-2 bg-red-950/30 p-2 rounded-lg border border-red-900/40">
+                                    <i class="fa-solid fa-ban"></i>
+                                    <span>[УНИЧТОЖЕНО HUNTER ДЛЯ TETPOLINA]: Сообщение пользователя mcl_6667 стерто за нарушение гармонии чата. Остальные зрители в безопасности.</span>
+                                </div>
+                            `;
+                            target.classList.remove('target-vaporizing');
+                        }, 500);
+                    }
+                }, 600);
+            } else {
+                showSimToast("Сообщение обычного зрителя сохранено в чате tetpolina.");
+            }
+        }
+
+        function openInstallModal() {
+            installModal.classList.toggle('hidden');
+        }
+
+        function completeInstallation() {
+            installModal.classList.add('hidden');
+            showSimToast("🚀 Фильтр активирован! mcl_6667 под прицелом.");
+        }
+
+        // Random background chat messages from normal users
+        const randomNames = ["Ananasik", "Kesha_Pro", "Saloed_99", "BebraBoy", "VikaStream"];
+        const randomTexts = [
+            "tetpolina, давай еще катку!",
+            "Ура, любимый стрим!",
+            "Как же круто!",
+            "Всем добрый вечер",
+            "PogChamp"
+        ];
+
+        setInterval(() => {
+            if (simChatBox.children.length < 15) {
+                const name = randomNames[Math.floor(Math.random() * randomNames.length)];
+                const text = randomTexts[Math.floor(Math.random() * randomTexts.length)];
+                const msgId = 'msg-' + Date.now();
+                const div = document.createElement('div');
+                div.className = 'flex flex-col space-y-1 bg-twitch-dark/60 p-2.5 rounded-xl border border-twitch-border/50 text-xs transition';
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-zinc-300">${name}</span>
+                        <span class="text-[10px] text-zinc-500 font-mono">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', second:'2-digit'})}</span>
+                    </div>
+                    <p class="text-zinc-200 leading-relaxed">${text}</p>
+                `;
+                simChatBox.appendChild(div);
+                simChatBox.scrollTop = simChatBox.scrollHeight;
+                if (simChatBox.children.length > 25) {
+                    simChatBox.removeChild(simChatBox.children[0]);
+                }
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
